@@ -1,25 +1,11 @@
 import express from "express";
+import todosRoutes from "./routes/todos.routes.js";
 
 //create express app
 const app= express();
 
-//Define routes
-app.get('/',(req,res) =>{
-   // console.log(req.query, req.headers);
-    res.send('willkommen');
-
-});
-
-app.get('/ping',(req,res) =>{
-    //console.log(req.query,req.headers);
-    res.send('pingpong');
-});
-app.get('/file',(req,res)=>{
-    console.log(process.cwd());
-    res.sendFile(process.cwd() +'/index.html');
-});
-
-
+// Use routes
+app.use(todosRoutes);
 
 //Listen to incomin requests
 app.listen(4000,()=> {
